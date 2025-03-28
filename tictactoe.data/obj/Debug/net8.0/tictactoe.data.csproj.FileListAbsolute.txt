@@ -1,0 +1,14 @@
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.data/bin/Debug/net8.0/tictactoe.data.deps.json
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.data/bin/Debug/net8.0/tictactoe.data.runtimeconfig.json
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.data/bin/Debug/net8.0/tictactoe.data.dll
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.data/bin/Debug/net8.0/tictactoe.data.pdb
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.data/obj/Debug/net8.0/tictactoe.data.csproj.AssemblyReference.cache
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.data/obj/Debug/net8.0/tictactoe.data.GeneratedMSBuildEditorConfig.editorconfig
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.data/obj/Debug/net8.0/tictactoe.data.AssemblyInfoInputs.cache
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.data/obj/Debug/net8.0/tictactoe.data.AssemblyInfo.cs
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.data/obj/Debug/net8.0/tictactoe.data.csproj.CoreCompileInputs.cache
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.data/obj/Debug/net8.0/tictactoe.data.dll
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.data/obj/Debug/net8.0/refint/tictactoe.data.dll
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.data/obj/Debug/net8.0/tictactoe.data.pdb
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.data/obj/Debug/net8.0/tictactoe.data.genruntimeconfig.cache
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.data/obj/Debug/net8.0/ref/tictactoe.data.dll
