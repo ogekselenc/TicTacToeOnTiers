@@ -1,16 +1,9 @@
 using MediatR;
+using tictactoe.data.Entities;
+using tictactoe.data.Repositories;
 
-namespace tictactoe.domain.Commands
+public class CreateGameCommand : IRequest<int>
 {
-    public class CreateGameCommand : IRequest<int>
-    {
-        public int BoardSize { get; set; }
-        public int WinningLineLength { get; set; }
-
-        public CreateGameCommand(int boardSize, int winningLineLength)
-        {
-            BoardSize = boardSize;
-            WinningLineLength = winningLineLength;
-        }
-    }
+    public int PlayerXId { get; set; }
+    public int PlayerOId { get; set; }
 }

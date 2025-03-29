@@ -1,23 +1,14 @@
-using System;
-using System.Collections.Generic;
+namespace tictactoe.data.Entities;
 
-namespace tictactoe.data.Entities
+public class Game
 {
-    public class Game
-    {
-        public int Id { get; set; }
-        public int BoardSize { get; set; }
-        public int WinningLineLength { get; set; }
-        public int? PlayerXId { get; set; }
-        public int? PlayerOId { get; set; }
-        public GameStatus Status { get; set; }
-        public ICollection<Move> Moves { get; set; } = new List<Move>();
+    public int Id { get; set; }
+    public int PlayerXId { get; set; }
+    public int PlayerOId { get; set; }
+    public string Status { get; set; } = "InProgress";
+    public int? WinnerId { get; set; }
+    public int BoardSize { get; set; } = 3;
+    public bool IsDeleted { get; set; } = false;
 
-        public enum GameStatus
-        {
-            WaitingForOpponent,
-            InProgress,
-            Finished
-        }
-    }
+    public ICollection<Move> Moves { get; set; } = new List<Move>();
 }

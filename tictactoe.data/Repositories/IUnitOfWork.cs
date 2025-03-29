@@ -1,10 +1,11 @@
-namespace tictactoe.data.Repositories
+using tictactoe.data.Entities;
+
+namespace tictactoe.data.Repositories;
+
+public interface IUnitOfWork
 {
-    public interface IUnitOfWork : IDisposable
-    {
-        IGameRepository Games { get; }
-        IPlayerRepository Players { get; }
-        IMoveRepository Moves { get; }
-        Task<int> SaveChangesAsync();
-    }
+    IRepository<Player> Players { get; }
+    IRepository<Game> Games { get; }
+    IRepository<Move> Moves { get; }
+    Task SaveChangesAsync();
 }

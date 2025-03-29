@@ -14,6 +14,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddMediatR(typeof(CreatePlayerCommand).Assembly);
 // Registracija UnitOfWork-a i repozitorijuma
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 builder.Services.AddControllers();
 
 var app = builder.Build();
