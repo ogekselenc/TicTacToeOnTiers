@@ -9,6 +9,7 @@
 /home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.domain/obj/Debug/net8.0/tictactoe.domain.AssemblyInfoInputs.cache
 /home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.domain/obj/Debug/net8.0/tictactoe.domain.AssemblyInfo.cs
 /home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.domain/obj/Debug/net8.0/tictactoe.domain.csproj.CoreCompileInputs.cache
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.domain/obj/Debug/net8.0/tictactoe.domain.sourcelink.json
 /home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.domain/obj/Debug/net8.0/tictacto.4E798828.Up2Date
 /home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.domain/obj/Debug/net8.0/tictactoe.domain.dll
 /home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.domain/obj/Debug/net8.0/refint/tictactoe.domain.dll
