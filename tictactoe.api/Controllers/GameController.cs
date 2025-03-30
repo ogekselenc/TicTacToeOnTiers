@@ -1,38 +1,65 @@
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using tictactoe.data.Repositories;
+using System.Threading.Tasks;
+using tictactoe.domain.Commands;
+using tictactoe.domain.Queries;
+using tictactoe.domain.Services;
+using MediatR;
 
-
-[ApiController]
-[Route("api/games")]
-public class GameController : ControllerBase
+namespace tictactoe.api.Controllers
 {
-    private readonly IMediator _mediator;
-
-    public GameController(IMediator mediator)
+    [Route("api/[controller]")]
+    [ApiController]
+    public class GameController : ControllerBase
     {
-        _mediator = mediator;
-    }
+        private readonly IMediator _mediator;
 
-    [HttpPost]
-    public async Task<IActionResult> CreateGame([FromBody] CreateGameCommand command)
-    {
-        var gameId = await _mediator.Send(command);
-        return CreatedAtAction(nameof(GetGame), new { id = gameId }, gameId);
-    }
+        public GameController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
 
-    [HttpPost("{id}/moves")]
-    public async Task<IActionResult> MakeMove([FromRoute] int id, [FromBody] MakeMoveCommand command)
-    {
-        command.GameId = id;
-        var result = await _mediator.Send(command);
-        return result ? Ok() : BadRequest("Invalid move");
-    }
+        
+        [HttpPost("create")]
+        public async Task<IActionResult> CreateGame([FromBody] CreateGameCommand command)
+        {
+            if (command.BoardSize < 3 || command.WinLength < 3 || command.WinLength > command.BoardSize)
+            {
+                return BadRequest("Invalid board size or winning length.");
+            }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetGame(int id)
-    {
-        var game = await _mediator.Send(new GetGameQuery { GameId = id });
-        return game != null ? Ok(game) : NotFound();
+            var result = await _mediator.Send(command);
+            if (result == 0) return BadRequest("Game could not be created.");
+
+            return CreatedAtAction(nameof(GetGame), new { gameId = result }, result);
+        }
+
+        [HttpGet("{gameId}")]
+        public async Task<IActionResult> GetGame(int gameId)
+        {
+            var query = new GetGameQuery(gameId);
+            var result = await _mediator.Send(query);
+            if (result == null) return NotFound($"Game with ID {gameId} not found.");
+
+            return Ok(result);
+        }
+
+        [HttpPost("move")]
+        public async Task<IActionResult> MakeMove([FromBody] MakeMoveCommand command)
+        {
+            var result = await _mediator.Send(command);
+            if (!result) return BadRequest(result);
+
+            return Ok(result);
+        }
+
+        [HttpDelete("{gameId}")]
+        public async Task<IActionResult> SoftDeleteGame(int gameId)
+        {
+            var command = new SoftDeleteGameCommand(gameId);
+            var result = await _mediator.Send(command);
+            if (!result) return NotFound($"Game with ID {gameId} not found or already deleted.");
+
+            return Ok($"Game with ID {gameId} has been deleted.");
+        }
     }
 }

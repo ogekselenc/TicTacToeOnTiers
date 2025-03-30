@@ -14,7 +14,7 @@ public class MakeMoveHandler : IRequestHandler<MakeMoveCommand, bool>
     public async Task<bool> Handle(MakeMoveCommand request, CancellationToken cancellationToken)
     {
         var game = await _unitOfWork.Games.GetByIdAsync(request.GameId);
-        if (game == null || game.Status != "InProgress") return false;
+        if (game == null || game.Status != GameStatus.InProgress) return false;
 
         var moveExists = await _unitOfWork.Moves.FindAsync(m => m.GameId == request.GameId && m.Row == request.Row && m.Column == request.Column);
         if (moveExists != null) return false;

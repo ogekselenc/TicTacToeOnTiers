@@ -1,3 +1,11 @@
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/obj/Debug/net8.0/tictactoe.api.csproj.AssemblyReference.cache
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/obj/Debug/net8.0/tictactoe.api.GeneratedMSBuildEditorConfig.editorconfig
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/obj/Debug/net8.0/tictactoe.api.AssemblyInfoInputs.cache
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/obj/Debug/net8.0/tictactoe.api.AssemblyInfo.cs
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/obj/Debug/net8.0/tictactoe.api.csproj.CoreCompileInputs.cache
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/obj/Debug/net8.0/tictactoe.api.MvcApplicationPartsAssemblyInfo.cs
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/obj/Debug/net8.0/tictactoe.api.MvcApplicationPartsAssemblyInfo.cache
+/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/obj/Debug/net8.0/tictactoe.api.sourcelink.json
 /home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/bin/Debug/net8.0/appsettings.Development.json
 /home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/bin/Debug/net8.0/appsettings.json
 /home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/bin/Debug/net8.0/tictactoe.api
@@ -119,14 +127,6 @@
 /home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/bin/Debug/net8.0/tictactoe.domain.dll
 /home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/bin/Debug/net8.0/tictactoe.domain.pdb
 /home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/bin/Debug/net8.0/tictactoe.data.pdb
-/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/obj/Debug/net8.0/tictactoe.api.csproj.AssemblyReference.cache
-/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/obj/Debug/net8.0/tictactoe.api.GeneratedMSBuildEditorConfig.editorconfig
-/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/obj/Debug/net8.0/tictactoe.api.AssemblyInfoInputs.cache
-/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/obj/Debug/net8.0/tictactoe.api.AssemblyInfo.cs
-/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/obj/Debug/net8.0/tictactoe.api.csproj.CoreCompileInputs.cache
-/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/obj/Debug/net8.0/tictactoe.api.MvcApplicationPartsAssemblyInfo.cs
-/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/obj/Debug/net8.0/tictactoe.api.MvcApplicationPartsAssemblyInfo.cache
-/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/obj/Debug/net8.0/tictactoe.api.sourcelink.json
 /home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/obj/Debug/net8.0/staticwebassets.build.json
 /home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/obj/Debug/net8.0/staticwebassets.development.json
 /home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/obj/Debug/net8.0/staticwebassets/msbuild.tictactoe.api.Microsoft.AspNetCore.StaticWebAssets.props

@@ -5,6 +5,10 @@ using tictactoe.data.Repositories;
 public class GetGameQuery : IRequest<Game>
 {
     public int GameId { get; set; }
+    public GetGameQuery(int gameId)
+    {
+        GameId = gameId;
+    }
 }
 
 public class GetGameHandler : IRequestHandler<GetGameQuery, Game>
@@ -18,6 +22,11 @@ public class GetGameHandler : IRequestHandler<GetGameQuery, Game>
 
     public async Task<Game> Handle(GetGameQuery request, CancellationToken cancellationToken)
     {
-        return await _unitOfWork.Games.GetByIdAsync(request.GameId);
+        var game = await _unitOfWork.Games.GetByIdAsync(request.GameId);
+        if (game == null)
+        {
+            throw new KeyNotFoundException($"Game with ID {request.GameId} was not found.");
+        }
+        return game;
     }
 }
