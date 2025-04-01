@@ -23,7 +23,7 @@ namespace tictactoe.data
             modelBuilder.Entity<Game>()
                 .HasOne<Player>()
                 .WithMany()
-                .HasForeignKey(g => g.PlayerOId)
+                //.HasForeignKey(g => g.PlayerOId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

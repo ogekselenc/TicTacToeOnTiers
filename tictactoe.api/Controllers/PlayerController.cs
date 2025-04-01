@@ -6,7 +6,7 @@ using tictactoe.domain.Queries;
 namespace tictactoe.api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/players")]
     public class PlayerController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -16,14 +16,14 @@ namespace tictactoe.api.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost]
+        [HttpPost("createPlayer")]
         public async Task<IActionResult> CreatePlayer([FromBody] CreatePlayerRequest request)
         {
             var playerId = await _mediator.Send(new CreatePlayerCommand(request.Name));
             return CreatedAtAction(nameof(CreatePlayer), new { id = playerId }, playerId);
         }
 
-        [HttpGet]
+        [HttpGet("getPlayers")]
         public async Task<IActionResult> GetPlayers()
         {
             var players = await _mediator.Send(new GetPlayersQuery());
