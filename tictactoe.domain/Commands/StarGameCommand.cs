@@ -3,11 +3,11 @@ using System;
 
 namespace tictactoe.domain.Commands
 {
-    public class CreateGameCommand : IRequest<int>
+    public class StartGameCommand : IRequest<Guid>
     {
-        public int PlayerXId { get; set; }
+        public Guid PlayerXId { get; set; }
+        public Guid PlayerOId { get; set; }
         public int BoardSize { get; set; }
         public int WinningLineLength { get; set; }
     }
-
 }

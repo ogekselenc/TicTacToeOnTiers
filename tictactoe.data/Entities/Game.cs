@@ -5,8 +5,8 @@ public class Game
     public int Id { get; set; }
     public int BoardSize { get; set; }
     public int WinningLineLength { get; set; }
-    public int? PlayerXId { get; set; }
-    public int? PlayerOId { get; set; }
+    public int PlayerXId { get; set; }
+    public int PlayerOId { get; set; }
     public bool IsDeleted { get; set; } = false;
 
     public GameStatus Status { get; set; } = GameStatus.InProgress;

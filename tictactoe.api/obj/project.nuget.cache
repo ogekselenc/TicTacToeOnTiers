@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OVFBLw8AGUs=",
+  "dgSpecHash": "mPzEpVm5P20=",
   "success": true,
-  "projectFilePath": "/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.api/tictactoe.api.csproj",
+  "projectFilePath": "/home/ognjen/Documents/C#/NovaNaGumama/TicTacToeOnTiers/tictactoe.api/tictactoe.api.csproj",
   "expectedPackageFiles": [
     "/home/ognjen/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/home/ognjen/.nuget/packages/mediatr/11.1.0/mediatr.11.1.0.nupkg.sha512",

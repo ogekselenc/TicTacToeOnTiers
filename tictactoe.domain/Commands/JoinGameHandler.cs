@@ -18,15 +18,15 @@ namespace tictactoe.domain.Commands
         public async Task<bool> Handle(JoinGameCommand request, CancellationToken cancellationToken)
         {
             var game = await _unitOfWork.Games.GetByIdAsync(request.GameId);
-            var player = await _unitOfWork.Players.GetByIdAsync(request.PlayerId);
+            var player = await _unitOfWork.Players.GetByIdAsync(request.PlayerOId);
 
             if (game == null || player == null) return false; // Ne postoji igra ili igrač
 
             // Dodaj igrača kao X ako nema igrača X, inače kao O
-            if (game.PlayerXId == null)
-                game.PlayerXId = request.PlayerId;
-            else if (game.PlayerOId == null)
-                game.PlayerOId = request.PlayerId;
+            if (game.PlayerXId == 0)
+                game.PlayerXId = request.PlayerOId;
+            else if (game.PlayerOId == 0)
+                game.PlayerOId = request.PlayerOId;
             else
                 return false; // Igra je već popunjena
 

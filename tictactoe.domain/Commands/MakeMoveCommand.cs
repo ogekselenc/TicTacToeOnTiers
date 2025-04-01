@@ -1,11 +1,13 @@
 using MediatR;
-using tictactoe.data.Entities;
-using tictactoe.data.Repositories;
+using System;
 
-public class MakeMoveCommand : IRequest<bool>
+namespace tictactoe.domain.Commands
 {
-    public int GameId { get; set; }
-    public int PlayerId { get; set; }
-    public int Row { get; set; }
-    public int Column { get; set; }
+    public class MakeMoveCommand : IRequest<bool>
+    {
+        public int GameId { get; set; }
+        public int PlayerId { get; set; }
+        public int Row { get; set; }
+        public int Column { get; set; }
+    }
 }

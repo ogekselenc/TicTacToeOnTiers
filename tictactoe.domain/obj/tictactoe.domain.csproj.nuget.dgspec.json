@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.domain/tictactoe.domain.csproj": {}
+    "/home/ognjen/Documents/C#/NovaNaGumama/TicTacToeOnTiers/tictactoe.domain/tictactoe.domain.csproj": {}
   },
   "projects": {
-    "/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.data/tictactoe.data.csproj": {
+    "/home/ognjen/Documents/C#/NovaNaGumama/TicTacToeOnTiers/tictactoe.data/tictactoe.data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.data/tictactoe.data.csproj",
+        "projectUniqueName": "/home/ognjen/Documents/C#/NovaNaGumama/TicTacToeOnTiers/tictactoe.data/tictactoe.data.csproj",
         "projectName": "tictactoe.data",
-        "projectPath": "/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.data/tictactoe.data.csproj",
+        "projectPath": "/home/ognjen/Documents/C#/NovaNaGumama/TicTacToeOnTiers/tictactoe.data/tictactoe.data.csproj",
         "packagesPath": "/home/ognjen/.nuget/packages/",
-        "outputPath": "/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.data/obj/",
+        "outputPath": "/home/ognjen/Documents/C#/NovaNaGumama/TicTacToeOnTiers/tictactoe.data/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ognjen/.nuget/NuGet/NuGet.Config"
@@ -92,14 +92,14 @@
         }
       }
     },
-    "/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.domain/tictactoe.domain.csproj": {
+    "/home/ognjen/Documents/C#/NovaNaGumama/TicTacToeOnTiers/tictactoe.domain/tictactoe.domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.domain/tictactoe.domain.csproj",
+        "projectUniqueName": "/home/ognjen/Documents/C#/NovaNaGumama/TicTacToeOnTiers/tictactoe.domain/tictactoe.domain.csproj",
         "projectName": "tictactoe.domain",
-        "projectPath": "/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.domain/tictactoe.domain.csproj",
+        "projectPath": "/home/ognjen/Documents/C#/NovaNaGumama/TicTacToeOnTiers/tictactoe.domain/tictactoe.domain.csproj",
         "packagesPath": "/home/ognjen/.nuget/packages/",
-        "outputPath": "/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.domain/obj/",
+        "outputPath": "/home/ognjen/Documents/C#/NovaNaGumama/TicTacToeOnTiers/tictactoe.domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ognjen/.nuget/NuGet/NuGet.Config"
@@ -114,8 +114,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.data/tictactoe.data.csproj": {
-                "projectPath": "/home/ognjen/Documents/C#/tictactoeontiersAPI/src/tictactoe.data/tictactoe.data.csproj"
+              "/home/ognjen/Documents/C#/NovaNaGumama/TicTacToeOnTiers/tictactoe.data/tictactoe.data.csproj": {
+                "projectPath": "/home/ognjen/Documents/C#/NovaNaGumama/TicTacToeOnTiers/tictactoe.data/tictactoe.data.csproj"
               }
             }
           }

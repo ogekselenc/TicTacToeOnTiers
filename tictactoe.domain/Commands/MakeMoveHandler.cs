@@ -1,6 +1,7 @@
 using MediatR;
 using tictactoe.data.Entities;
 using tictactoe.data.Repositories;
+using tictactoe.domain.Commands;
 
 public class MakeMoveHandler : IRequestHandler<MakeMoveCommand, bool>
 {
