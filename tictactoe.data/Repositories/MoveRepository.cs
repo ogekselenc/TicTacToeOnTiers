@@ -15,10 +15,10 @@ namespace tictactoe.data.Repositories
             await _context.SaveChangesAsync();
             return true;
         }
-        public async Task<bool> ValidateMove(int gameId, int x, int y)
+        public async Task<bool> ValidateMove(int gameId, int PlayerId,int Row, int Column)
         {
             // Implementation for validating a move
-            return !await _context.Set<Move>().AnyAsync(m => m.GameId == gameId && m.PlayerId == x && m.PlayerId == y);
+            return !await _context.Set<Move>().AnyAsync(m => m.GameId == gameId && m.PlayerId == Row && m.PlayerId == Column);
         }
     }
 }

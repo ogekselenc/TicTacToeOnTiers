@@ -18,7 +18,7 @@ public class MakeMoveHandler : IRequestHandler<MakeMoveCommand, bool>
         if (game == null || game.Status != GameStatus.InProgress) return false;
 
         var moveExists = await _unitOfWork.Moves.FindAsync(m => m.GameId == request.GameId && m.Row == request.Row && m.Column == request.Column);
-        if (moveExists != null) return false;
+        //if (moveExists != null) return false;
 
         var move = new Move { GameId = request.GameId, PlayerId = request.PlayerId, Row = request.Row, Column = request.Column };
         await _unitOfWork.Moves.AddAsync(move);

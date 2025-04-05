@@ -19,8 +19,8 @@ namespace tictactoe.api.Controllers
         [HttpPost("createPlayer")]
         public async Task<IActionResult> CreatePlayer([FromBody] CreatePlayerRequest request)
         {
-            var playerId = await _mediator.Send(new CreatePlayerCommand(request.Name));
-            return CreatedAtAction(nameof(CreatePlayer), new { id = playerId }, playerId);
+            var playerXId = await _mediator.Send(new CreatePlayerCommand(request.Name));
+            return CreatedAtAction(nameof(CreatePlayer), new { id = playerXId }, playerXId);
         }
 
         [HttpGet("getPlayers")]

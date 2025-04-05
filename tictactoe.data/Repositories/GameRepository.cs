@@ -8,7 +8,7 @@ namespace tictactoe.data.Repositories
 
         public async Task<int> CreateGame(Game game)
         {
-            game.Status = GameStatus.WaitingForPlayer;
+            game.Status = GameStatus.InProgress;
             _context.Games.Add(game);
             await _context.SaveChangesAsync();
             return game.Id;

@@ -7,8 +7,8 @@ using MediatR;
 
 namespace tictactoe.api.Controllers
 {
-    [Route("api/games")]
     [ApiController]
+    [Route("api/games")]
     public class GameController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -53,8 +53,8 @@ namespace tictactoe.api.Controllers
         /// <summary>
         /// Get the current game state.
         /// </summary>
-        [HttpGet("{gameId}")]
-        public async Task<IActionResult> GetGame(Guid gameId)
+        [HttpGet("{gameId}/state")]
+        public async Task<IActionResult> GetGame(int gameId)
         {
             var query = new GetGameStateQuery { GameId = gameId };
             var result = await _mediator.Send(query);

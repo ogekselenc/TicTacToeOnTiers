@@ -16,8 +16,10 @@ namespace tictactoe.domain.Commands
         public async Task<int> Handle(CreateGameCommand request, CancellationToken cancellationToken)
         {
             var game = new Game { PlayerXId = request.PlayerXId,
+                PlayerOId = request.PlayerOId,
                 BoardSize = request.BoardSize,
                 WinningLineLength = request.WinningLineLength };
+            game.Status = GameStatus.InProgress;
             await _unitOfWork.Games.AddAsync(game);
             await _unitOfWork.SaveChangesAsync();
             return game.Id;
