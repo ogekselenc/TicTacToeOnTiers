@@ -29,14 +29,15 @@ namespace tictactoe.domain.Services
             return row >= 0 && col >= 0 && row < size && col < size && board[row, col] == null;
         }
 
-        public static (string? Status, string? Reason) CheckOutcome(string[,] board, int row, int col, int winLength)
+        public static (GameStatus? Status, GameOutcome? Outcome, string? WinningSymbol) CheckOutcome(
+        string[,] board, int row, int col, int winLength)
         {
             string? symbol = board[row, col];
-            if (symbol == null) return (null, null);
+            if (symbol == null) return (null, null, null);
 
             int[][] directions = new int[][]
             {
-            new int[] {0, 1}, new int[] {1, 0}, new int[] {1, 1}, new int[] {1, -1}
+        new int[] {0, 1}, new int[] {1, 0}, new int[] {1, 1}, new int[] {1, -1}
             };
 
             foreach (var dir in directions)
@@ -45,13 +46,13 @@ namespace tictactoe.domain.Services
                 count += CountDirection(board, row, col, dir[0], dir[1], symbol);
                 count += CountDirection(board, row, col, -dir[0], -dir[1], symbol);
                 if (count >= winLength)
-                    return ("Win", $"Player {symbol} wins");
+                    return (GameStatus.Completed, GameOutcome.Win, symbol);
             }
 
             if (IsBoardFull(board))
-                return ("Draw", "The board is full");
+                return (GameStatus.Completed, GameOutcome.Draw, null);
 
-            return (null, null);
+            return (null, null, null);
         }
 
         private static int CountDirection(string[,] board, int row, int col, int dRow, int dCol, string symbol)

@@ -11,7 +11,6 @@ namespace tictactoe.data.Repositories
         Task AddAsync(T entity);
         void Update(T entity);
         void Remove(T entity);
-
-
+        Task<IEnumerable<T>> GetByGameIdAsync(int gameId);
     }
 }

@@ -6,9 +6,6 @@ using tictactoe.domain.Services;
 using tictactoe.domain.Commands;
 using tictactoe.data.Enums;
 
-
-
-
 namespace tictactoe.domain.Commands
 {
     public class MakeMoveHandler : IRequestHandler<MakeMoveRequest, MakeMoveResponse>
@@ -28,19 +25,21 @@ namespace tictactoe.domain.Commands
             if (game == null || player == null)
                 throw new Exception("Invalid game or player");
 
-            if (game.OutcomeStatus != 0)
+            if (game.Status == GameStatus.Completed)
                 throw new Exception("Game already finished");
 
-            if ((game.PlayerXId != request.PlayerId && game.PlayerOId != request.PlayerId))
+            if (game.PlayerXId != request.PlayerId && game.PlayerOId != request.PlayerId)
                 throw new Exception("Player not part of this game");
 
-            /*if (game.Moves.Count % 2 == 0 && game.PlayerXId != request.PlayerId)
-                throw new Exception("It's not your turn");*/
+            var moves = await _unitOfWork.Moves.GetByGameIdAsync(game.Id);
 
-            var moves = await _unitOfWork.Moves.GetByIdAsync(game.Id);
+            if (moves.Count() % 2 == 0 && game.PlayerXId != request.PlayerId)
+                throw new Exception("It's not your turn (X's turn)");
+            if (moves.Count() % 2 != 0 && game.PlayerOId != request.PlayerId)
+                throw new Exception("It's not your turn (O's turn)");
 
-            var board = GameLogicHelper.ReconstructBoard(game.BoardSize, game.Moves, game);
-            
+            var board = GameLogicHelper.ReconstructBoard(game.BoardSize, moves, game);
+
             if (!GameLogicHelper.IsValidMove(board, request.Row, request.Column))
                 throw new Exception("Invalid move position");
 
@@ -56,12 +55,12 @@ namespace tictactoe.domain.Commands
             await _unitOfWork.Moves.AddAsync(move);
 
             board[request.Row, request.Column] = GameLogicHelper.GetPlayerSymbol(game, request.PlayerId);
-            var outcome = GameLogicHelper.CheckOutcome(board, request.Row, request.Column, game.WinningLineLength);
+            var (status, outcome, WinningSymbol) = GameLogicHelper.CheckOutcome(board, request.Row, request.Column, game.WinningLineLength);
 
-            if (outcome.Status != null)
+            if (status == GameStatus.Completed)
             {
-                game.OutcomeStatus = Enum.Parse<GameOutcome>(outcome.Status);
-                game.OutcomeReason = outcome.Reason;
+                game.Status = GameStatus.Completed;
+                game.OutcomeStatus = outcome ?? GameOutcome.None;
             }
 
             await _unitOfWork.SaveChangesAsync();
@@ -73,8 +72,9 @@ namespace tictactoe.domain.Commands
                 PlayerId = move.PlayerId,
                 Row = move.Row,
                 Column = move.Column,
-                OutcomeStatus = game.OutcomeStatus.ToString(),
-                OutcomeReason = game.OutcomeReason
+                Status = game.Status,
+                OutcomeStatus = game.OutcomeStatus,
+                WinningPlayer = WinningSymbol
             };
         }
     }

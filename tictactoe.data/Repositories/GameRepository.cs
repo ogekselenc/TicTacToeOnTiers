@@ -26,9 +26,9 @@ namespace tictactoe.data.Repositories
             await _context.SaveChangesAsync();
             return true;
         }
-        public async Task<Game?> GetGameById(Game game)
+        public async Task<Game?> GetGameById(int gameId)
         {
-            return await _context.Games.FindAsync(game.Id);
+            return await _context.Games.FindAsync(gameId);
         }
     
         public async Task<bool> UpdateGame(Game game)

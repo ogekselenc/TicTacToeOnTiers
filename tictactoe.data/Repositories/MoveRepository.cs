@@ -24,6 +24,9 @@ namespace tictactoe.data.Repositories
         {
             return await _context.Set<Move>().Where(m => m.GameId == gameId).ToListAsync();
         }
-       
+        public async Task<int> GetMoveCountForGame(int gameId)
+        {
+            return await _context.Set<Move>().CountAsync(m => m.GameId == gameId);
+        }
     }
 }

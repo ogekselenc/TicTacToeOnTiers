@@ -26,6 +26,8 @@ namespace tictactoe.data.Repositories
         public void Update(T entity) => _dbSet.Update(entity);
 
         public void Remove(T entity) => _dbSet.Remove(entity);
-        
+
+        public async Task<IEnumerable<T>> GetByGameIdAsync(int gameId) =>
+            await _dbSet.Where(entity => EF.Property<int>(entity, "GameId") == gameId).ToListAsync();
     }
 }
