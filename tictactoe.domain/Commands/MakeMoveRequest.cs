@@ -3,7 +3,7 @@ using System;
 
 namespace tictactoe.domain.Commands
 {
-    public class MakeMoveCommand : IRequest<bool>
+    public class MakeMoveRequest : IRequest<MakeMoveResponse>
     {
         public int GameId { get; set; }
         public int PlayerId { get; set; }

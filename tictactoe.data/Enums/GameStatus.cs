@@ -1,6 +1,10 @@
-public enum GameStatus
+namespace tictactoe.data.Enums
 {
-    InProgress,
-    WaitingForPlayer,
-    Completed
+
+    public enum GameStatus
+    {
+        InProgress,
+        WaitingForPlayer,
+        Completed
+    }
 }

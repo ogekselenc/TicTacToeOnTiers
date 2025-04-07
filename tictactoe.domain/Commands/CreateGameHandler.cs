@@ -1,6 +1,7 @@
 using MediatR;
 using tictactoe.data.Entities;
 using tictactoe.data.Repositories;
+using tictactoe.data.Enums;
 
 namespace tictactoe.domain.Commands
 {

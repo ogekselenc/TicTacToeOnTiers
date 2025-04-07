@@ -39,16 +39,7 @@ namespace tictactoe.api.Controllers
             return Ok(result);
         }
 
-        /// <summary>
-        /// Make a move in an active game (only when both players have joined).
-        /// </summary>
-        [HttpPost("{gameId}/move")]
-        public async Task<IActionResult> MakeMove(int gameId, [FromBody] MakeMoveCommand command)
-        {
-            if (gameId != command.GameId) return BadRequest("Game ID mismatch.");
-            var result = await _mediator.Send(command);
-            return Ok(result);
-        }
+    
 
         /// <summary>
         /// Get the current game state.

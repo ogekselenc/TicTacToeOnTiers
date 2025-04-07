@@ -1,4 +1,5 @@
 using tictactoe.data.Entities;
+using tictactoe.data.Enums;
 
 namespace tictactoe.data.Repositories
 {

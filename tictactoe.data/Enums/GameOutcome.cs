@@ -1,10 +1,14 @@
-public enum GameOutcome
+namespace tictactoe.data.Enums
 {
-    None,
-    Win,
-    Draw,
-    Resigned,
-    Timeout,
-    Disconnected,
-    IllegalMove
+
+    public enum GameOutcome
+    {
+        None,
+        Win,
+        Draw,
+        Resigned,
+        Timeout,
+        Disconnected,
+        IllegalMove
+    }
 }
