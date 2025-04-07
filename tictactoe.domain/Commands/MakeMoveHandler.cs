@@ -61,6 +61,14 @@ namespace tictactoe.domain.Commands
             {
                 game.Status = GameStatus.Completed;
                 game.OutcomeStatus = outcome ?? GameOutcome.None;
+                if (outcome == GameOutcome.Win)
+                {
+                    game.WinningPlayerId = request.PlayerId; // The player who made the winning move
+                }
+                else
+                {
+                    game.WinningPlayerId = null; // For draws
+                }
             }
 
             await _unitOfWork.SaveChangesAsync();

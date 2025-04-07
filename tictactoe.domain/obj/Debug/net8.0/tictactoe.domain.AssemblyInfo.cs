@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("tictactoe.domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9e8ab5847b5a0e17d061c65e9931d30d8deb3ce9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f02f98bdedb1c15ac2ff333545f1f176c44434e7")]
 [assembly: System.Reflection.AssemblyProductAttribute("tictactoe.domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("tictactoe.domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
