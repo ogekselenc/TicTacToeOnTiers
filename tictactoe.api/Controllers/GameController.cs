@@ -4,6 +4,10 @@ using System.Threading.Tasks;
 using tictactoe.domain.Commands;
 using tictactoe.domain.Queries;
 using MediatR;
+using tictactoe.data;
+using System.Net;
+using Microsoft.EntityFrameworkCore;
+using tictactoe.data.Entities;
 
 namespace tictactoe.api.Controllers
 {
@@ -13,9 +17,15 @@ namespace tictactoe.api.Controllers
     {
         private readonly IMediator _mediator;
 
-        public GameController(IMediator mediator)
+        public AppDbContext Context { get; }
+
+        public GameService GameService { get; }
+
+        public GameController(IMediator mediator, AppDbContext context, GameService gameService)
         {
             _mediator = mediator;
+            Context = context;
+            GameService = gameService;
         }
 
         /// <summary>
@@ -39,17 +49,30 @@ namespace tictactoe.api.Controllers
             return Ok(result);
         }
 
-    
-
-        /// <summary>
-        /// Get the current game state.
-        /// </summary>
-        [HttpGet("{gameId}/state")]
-        public async Task<IActionResult> GetGame(int gameId)
+        [HttpGet("{gameId}")]
+        public async Task<IActionResult> GetGameById(int gameId)
         {
-            var query = new GetGameStateQuery { GameId = gameId };
+            var query = new GetGameQuery(gameId);
             var result = await _mediator.Send(query);
             return Ok(result);
+        }
+
+        [HttpGet("get/{gameId}")]
+        public async Task<Game> GetById(int gameId)
+        {
+            return await GameService.GetGameById(gameId);
+        }
+
+        [HttpPost("delete/{gameId}")]
+        public async Task<bool> Delete(int gameId)
+        {
+            return await GameService.Delete(gameId);
+        }
+
+        [HttpPost("add")]
+        public async Task<bool> Add(Game game)
+        {
+            return await GameService.Add(game);
         }
     }
 }

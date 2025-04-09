@@ -4,6 +4,8 @@ using tictactoe.data.Repositories;
 using MediatR;
 using System.Reflection;
 using tictactoe.domain.Commands;
+using tictactoe.domain.Queries;
+using tictactoe.data.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +21,8 @@ builder.Services.AddControllers();
 builder.Services.AddMediatR(typeof(CreatePlayerCommand).Assembly);
 // Registracija UnitOfWork-a i repozitorijuma
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddScoped<GameService>();
 
 // Configure CORS
 builder.Services.AddCors(options =>

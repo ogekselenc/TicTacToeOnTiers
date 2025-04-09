@@ -2,31 +2,34 @@ using MediatR;
 using tictactoe.data.Entities;
 using tictactoe.data.Repositories;
 
-public class GetGameQuery : IRequest<Game>
+namespace tictactoe.domain.Queries
 {
-    public int GameId { get; set; }
-    public GetGameQuery(int gameId)
+    public class GetGameQuery : IRequest<Game>
     {
-        GameId = gameId;
-    }
-}
-
-public class GetGameHandler : IRequestHandler<GetGameQuery, Game>
-{
-    private readonly IUnitOfWork _unitOfWork;
-
-    public GetGameHandler(IUnitOfWork unitOfWork)
-    {
-        _unitOfWork = unitOfWork;
-    }
-
-    public async Task<Game> Handle(GetGameQuery request, CancellationToken cancellationToken)
-    {
-        var game = await _unitOfWork.Games.GetByIdAsync(request.GameId);
-        if (game == null)
+        public int GameId { get; set; }
+        public GetGameQuery(int gameId)
         {
-            throw new KeyNotFoundException($"Game with ID {request.GameId} was not found.");
+            GameId = gameId;
         }
-        return game;
+    }
+
+    public class GetGameHandler : IRequestHandler<GetGameQuery, Game>
+    {
+        private readonly IUnitOfWork _unitOfWork;
+
+        public GetGameHandler(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
+        public async Task<Game> Handle(GetGameQuery request, CancellationToken cancellationToken)
+        {
+            var game = await _unitOfWork.Games.GetByIdAsync(request.GameId);
+            if (game == null)
+            {
+                throw new KeyNotFoundException($"Game with ID {request.GameId} was not found.");
+            }
+            return game;
+        }
     }
 }

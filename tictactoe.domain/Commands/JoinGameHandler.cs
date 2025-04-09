@@ -23,9 +23,9 @@ namespace tictactoe.domain.Commands
             if (game == null || player == null) return false; // Ne postoji igra ili igrač
 
             // Dodaj igrača kao X ako nema igrača X, inače kao O
-            if (game.PlayerXId == 0)
+            if (game.PlayerXId == default)
                 game.PlayerXId = request.PlayerOId;
-            else if (game.PlayerOId == 0)
+            else if (game.PlayerOId == default)
                 game.PlayerOId = request.PlayerOId;
             else
                 return false; // Igra je već popunjena

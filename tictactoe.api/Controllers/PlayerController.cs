@@ -1,5 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using tictactoe.data;
+using tictactoe.data.Entities;
 using tictactoe.domain.Commands;
 using tictactoe.domain.Queries;
 
@@ -10,10 +12,13 @@ namespace tictactoe.api.Controllers
     public class PlayerController : ControllerBase
     {
         private readonly IMediator _mediator;
+        public AppDbContext Context { get; }
 
-        public PlayerController(IMediator mediator)
+        public PlayerController(IMediator mediator, AppDbContext context)
         {
+            Context = context;
             _mediator = mediator;
+
         }
 
         [HttpPost("createPlayer")]
@@ -29,6 +34,15 @@ namespace tictactoe.api.Controllers
             var players = await _mediator.Send(new GetPlayersQuery());
             return Ok(players);
         }
+
+        [HttpPost("add")]
+        public async Task<IActionResult> GetPlayers(Player player)
+        {
+            await Context.Players.AddAsync(player);
+            await Context.SaveChangesAsync();
+            return Ok();
+        }
+
 
     }
 

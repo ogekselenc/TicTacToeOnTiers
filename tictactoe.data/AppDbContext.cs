@@ -1,16 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using tictactoe.data.Entities;
-using tictactoe.data;
 
 namespace tictactoe.data
 {
     public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-
         public DbSet<Game> Games { get; set; }
-        public DbSet<Player> Players { get; set; }
         public DbSet<Move> Moves { get; set; }
+        public DbSet<Player> Players { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=tictactoeontiers;Username=ognjen;Password=ekselencija84.");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

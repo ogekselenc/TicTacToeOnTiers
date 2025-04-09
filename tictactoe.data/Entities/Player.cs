@@ -1,9 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+
 namespace tictactoe.data.Entities
 {
-    public class Player
+    public partial class Player
     {
         public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public bool IsDeleted { get; set; } = false;
+
+        public string Name { get; set; } = null!;
+
+        public bool IsDeleted { get; set; }
     }
 }
