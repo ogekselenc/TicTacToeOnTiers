@@ -19,13 +19,12 @@ namespace tictactoe.api.Controllers
 
         public AppDbContext Context { get; }
 
-        public GameService GameService { get; }
+        
 
-        public GameController(IMediator mediator, AppDbContext context, GameService gameService)
+        public GameController(IMediator mediator, AppDbContext context)
         {
             _mediator = mediator;
             Context = context;
-            GameService = gameService;
         }
 
         /// <summary>
@@ -57,22 +56,10 @@ namespace tictactoe.api.Controllers
             return Ok(result);
         }
 
-        [HttpGet("get/{gameId}")]
-        public async Task<Game> GetById(int gameId)
-        {
-            return await GameService.GetGameById(gameId);
-        }
-
         [HttpPost("delete/{gameId}")]
-        public async Task<bool> Delete(int gameId)
+        public async Task<bool> SoftDeleteGameCommand(int gameId)
         {
-            return await GameService.Delete(gameId);
-        }
-
-        [HttpPost("add")]
-        public async Task<bool> Add(Game game)
-        {
-            return await GameService.Add(game);
+            return await _mediator.Send(new SoftDeleteGameCommand(gameId));
         }
     }
 }

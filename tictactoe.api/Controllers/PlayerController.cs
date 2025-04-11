@@ -18,7 +18,6 @@ namespace tictactoe.api.Controllers
         {
             Context = context;
             _mediator = mediator;
-
         }
 
         [HttpPost("createPlayer")]
@@ -29,23 +28,11 @@ namespace tictactoe.api.Controllers
         }
 
         [HttpGet("getPlayers")]
-        public async Task<IActionResult> GetPlayers()
+        public async Task<IActionResult> GetPlayersQuery()
         {
             var players = await _mediator.Send(new GetPlayersQuery());
             return Ok(players);
         }
-
-        [HttpPost("add")]
-        public async Task<IActionResult> GetPlayers(Player player)
-        {
-            await Context.Players.AddAsync(player);
-            await Context.SaveChangesAsync();
-            return Ok();
-        }
-
-
     }
-
     public record CreatePlayerRequest(string Name);
-
 }

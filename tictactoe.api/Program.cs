@@ -19,10 +19,13 @@ builder.Services.AddControllers();
 
 // Registracija MediatR-a
 builder.Services.AddMediatR(typeof(CreatePlayerCommand).Assembly);
+builder.Services.AddMediatR(typeof(GetPlayersQuery).Assembly);
+
 // Registracija UnitOfWork-a i repozitorijuma
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-builder.Services.AddScoped<GameService>();
+
+
 
 // Configure CORS
 builder.Services.AddCors(options =>
