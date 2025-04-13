@@ -23,9 +23,8 @@ builder.Services.AddMediatR(typeof(GetPlayersQuery).Assembly);
 
 // Registracija UnitOfWork-a i repozitorijuma
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-
-
+builder.Services.AddScoped<IGameReadRepository, GameReadRepository>();
+builder.Services.AddScoped<IPlayerReadRepository, PlayerReadRepository>();
 
 // Configure CORS
 builder.Services.AddCors(options =>

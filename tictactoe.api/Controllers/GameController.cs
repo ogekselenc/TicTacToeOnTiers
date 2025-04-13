@@ -27,9 +27,6 @@ namespace tictactoe.api.Controllers
             Context = context;
         }
 
-        /// <summary>
-        /// Create a new game. The first player is assigned, but the game waits for the second player.
-        /// </summary>
         [HttpPost("create")]
         public async Task<IActionResult> CreateGame([FromBody] CreateGameCommand command)
         {
@@ -37,9 +34,6 @@ namespace tictactoe.api.Controllers
             return Ok(result);
         }
 
-        /// <summary>
-        /// Join an existing game as the second player.
-        /// </summary>
         [HttpPost("{gameId}/join")]
         public async Task<IActionResult> JoinGame(int gameId, [FromBody] JoinGameCommand command)
         {

@@ -28,10 +28,11 @@ namespace tictactoe.api.Controllers
         }
 
         [HttpGet("getPlayers")]
-        public async Task<IActionResult> GetPlayersQuery()
+        public async Task<IActionResult> GetAllPlayers()
         {
-            var players = await _mediator.Send(new GetPlayersQuery());
-            return Ok(players);
+            var query = new GetPlayersQuery();
+            var result = await _mediator.Send(query);
+            return Ok(result);
         }
     }
     public record CreatePlayerRequest(string Name);
