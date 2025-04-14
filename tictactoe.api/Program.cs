@@ -22,11 +22,13 @@ builder.Services.AddMediatR(typeof(CreatePlayerCommand).Assembly);
 builder.Services.AddMediatR(typeof(GetPlayersQuery).Assembly);
 
 // Registracija UnitOfWork-a i repozitorijuma
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IGameReadRepository, GameReadRepository>();
 builder.Services.AddScoped<IPlayerReadRepository, PlayerReadRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IGameRepository, GameRepository>();
+builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
+builder.Services.AddScoped<IMoveRepository, MoveRepository>();
 
-// Configure CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
@@ -38,8 +40,8 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 app.UseRouting();
-app.UseCors("AllowAll"); // Enable CORS policy
-app.UseDeveloperExceptionPage(); // Add this
-app.MapControllers();  // Enables controller routing
+app.UseCors("AllowAll"); 
+app.UseDeveloperExceptionPage(); 
+app.MapControllers(); 
 
 app.Run();

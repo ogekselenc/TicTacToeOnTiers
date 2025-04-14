@@ -3,15 +3,19 @@ using tictactoe.data.Enums;
 
 namespace tictactoe.data.Repositories
 {
-    public class GameRepository : Repository<Game>, IGameRepository
+    public class GameRepository : IGameRepository
     {
-        public GameRepository(AppDbContext context) : base(context) { }
+        private readonly AppDbContext _context;
 
+        public GameRepository(AppDbContext context)
+        {
+            _context = context;
+        }
         public async Task<int> CreateGame(Game game)
         {
             game.Status = GameStatus.InProgress;
             _context.Games.Add(game);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(); 
             return game.Id;
         }
 

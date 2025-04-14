@@ -5,17 +5,16 @@ namespace tictactoe.data.Repositories;
 public class UnitOfWork : IUnitOfWork
 {
     private readonly AppDbContext _context;
+    public IPlayerRepository Players { get; }
+    public IGameRepository Games { get; }
+    public IMoveRepository Moves { get; }
 
-    public IRepository<Player> Players { get; }
-    public IRepository<Game> Games { get; }
-    public IRepository<Move> Moves { get; }
-
-    public UnitOfWork(AppDbContext context)
+    public UnitOfWork(AppDbContext context, IGameRepository gameRepository, IMoveRepository moveRepository, IPlayerRepository playerRepository)
     {
         _context = context;
-        Players = new Repository<Player>(context);
-        Games = new Repository<Game>(context);
-        Moves = new Repository<Move>(context);
+        Players = playerRepository;
+        Games = gameRepository;
+        Moves = moveRepository;
     }
 
     public async Task SaveChangesAsync() => await _context.SaveChangesAsync();

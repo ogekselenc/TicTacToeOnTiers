@@ -8,7 +8,7 @@ namespace tictactoe.data.Repositories
     {
         Task<bool> AddMove(Move move);
         Task<bool> ValidateMove(int gameId, int PlayerId, int Row, int Column);
-        Task<IEnumerable<Move>> GetByGameIdAsync(int gameId); 
+        Task<IEnumerable<Move>> GetByGameIdAsync(int gameId);
         Task<int> GetMoveCountForGame(int gameId);
     }
 }

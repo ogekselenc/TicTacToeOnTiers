@@ -1,8 +1,7 @@
-using MediatR;
-using System;
+
 using tictactoe.data.Enums;
 
-namespace tictactoe.domain.Commands
+namespace tictactoe.domain.Commands 
 {
     public class MakeMoveResponse
     {
@@ -13,6 +12,6 @@ namespace tictactoe.domain.Commands
         public int Column { get; set; }
         public GameStatus Status { get; set; }
         public GameOutcome OutcomeStatus { get; set; }
-        public string? WinningPlayer { get; set; } // "X" or "O" or null
+        public string? WinningPlayer { get; set; }
     }
 }
