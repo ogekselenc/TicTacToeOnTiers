@@ -12,15 +12,23 @@ namespace tictactoe.domain.Commands
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public MakeMoveHandler(IUnitOfWork unitOfWork)
+        private readonly IGameRepository _gameRepository;
+        private readonly IPlayerRepository _playerRepository;
+        private readonly IMoveRepository _moveRepository;
+
+        public MakeMoveHandler(IUnitOfWork unitOfWork, IGameRepository gameRepository, IPlayerRepository playerRepository, IMoveRepository moveRepository)
         {
             _unitOfWork = unitOfWork;
+            _gameRepository = gameRepository;
+            _playerRepository = playerRepository;
+            _moveRepository = moveRepository;
         }
+
 
         public async Task<MakeMoveResponse> Handle(MakeMoveRequest request, CancellationToken cancellationToken)
         {
-            var game = await _unitOfWork.Games.GetByIdAsync(request.GameId);
-            var player = await _unitOfWork.Players.GetByIdAsync(request.PlayerId);
+            var game = await _gameRepository.GetGameById(request.GameId);
+            var player = await _playerRepository.GetPlayerById(request.PlayerId);
 
             if (game == null || player == null)
                 throw new Exception("Invalid game or player");
@@ -31,7 +39,7 @@ namespace tictactoe.domain.Commands
             if (game.PlayerXId != request.PlayerId && game.PlayerOId != request.PlayerId)
                 throw new Exception("Player not part of this game");
 
-            var moves = await _unitOfWork.Moves.GetByGameIdAsync(game.Id);
+            var moves = await _moveRepository.GetByGameIdAsync(game.Id);
 
             if (moves.Count() % 2 == 0 && game.PlayerXId != request.PlayerId)
                 throw new Exception("It's not your turn (X's turn)");
@@ -52,7 +60,7 @@ namespace tictactoe.domain.Commands
                 CreatedAt = DateTime.UtcNow
             };
 
-            await _unitOfWork.Moves.AddAsync(move);
+            await _moveRepository.AddMove(move);
 
             board[request.Row, request.Column] = GameLogicHelper.GetPlayerSymbol(game, request.PlayerId);
             var (status, outcome, WinningSymbol) = GameLogicHelper.CheckOutcome(board, request.Row, request.Column, game.WinningLineLength);

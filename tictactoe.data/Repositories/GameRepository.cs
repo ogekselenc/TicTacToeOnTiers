@@ -11,14 +11,14 @@ namespace tictactoe.data.Repositories
         {
             _context = context;
         }
-        public async Task<int> CreateGame(Game game)
+        public async Task CreateGame(Game game)
         {
-            game.Status = GameStatus.InProgress;
+            // Set initial status based on PlayerOId presence
+            game.Status = game.PlayerOId.HasValue
+                ? GameStatus.InProgress
+                : GameStatus.WaitingForPlayer;
             _context.Games.Add(game);
-            await _context.SaveChangesAsync(); 
-            return game.Id;
         }
-
         public async Task<bool> JoinGame(int gameId, int playerOId)
         {
             var game = await _context.Games.FindAsync(gameId);
@@ -27,7 +27,6 @@ namespace tictactoe.data.Repositories
 
             game.PlayerOId = playerOId;
             game.Status = GameStatus.InProgress;
-            await _context.SaveChangesAsync();
             return true;
         }
         public async Task<Game?> GetGameById(int gameId)
@@ -40,9 +39,7 @@ namespace tictactoe.data.Repositories
             var existingGame = await _context.Games.FindAsync(game.Id);
             if (existingGame == null)
                 return false;
-    
             _context.Entry(existingGame).CurrentValues.SetValues(game);
-            await _context.SaveChangesAsync();
             return true;
         }
     }

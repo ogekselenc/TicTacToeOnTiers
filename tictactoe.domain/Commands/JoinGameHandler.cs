@@ -9,16 +9,19 @@ namespace tictactoe.domain.Commands
     public class JoinGameHandler : IRequestHandler<JoinGameCommand, bool>
     {
         private readonly IUnitOfWork _unitOfWork;
-
-        public JoinGameHandler(IUnitOfWork unitOfWork)
+        private readonly IGameRepository _gameRepository;
+        private readonly IPlayerRepository _playerRepository;
+        public JoinGameHandler(IUnitOfWork unitOfWork, IGameRepository gameRepository, IPlayerRepository playerRepository)
         {
             _unitOfWork = unitOfWork;
+            _gameRepository = gameRepository;
+            _playerRepository = playerRepository;
         }
-
+        
         public async Task<bool> Handle(JoinGameCommand request, CancellationToken cancellationToken)
         {
-            var game = await _unitOfWork.Games.GetByIdAsync(request.GameId);
-            var player = await _unitOfWork.Players.GetByIdAsync(request.PlayerOId);
+            var game = await _gameRepository.GetGameById(request.GameId);
+            var player = await _playerRepository.GetPlayerById(request.PlayerOId);
 
             if (game == null || player == null) return false; // Ne postoji igra ili igrač
 

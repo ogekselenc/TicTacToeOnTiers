@@ -9,10 +9,11 @@ namespace tictactoe.domain.Commands
     public class CreateGameHandler : IRequestHandler<CreateGameCommand, int>
     {
         private readonly IUnitOfWork _unitOfWork;
-
-        public CreateGameHandler(IUnitOfWork unitOfWork)
+        private readonly IGameRepository _gameRepository;
+        public CreateGameHandler(IUnitOfWork unitOfWork, IGameRepository gameRepository)
         {
             _unitOfWork = unitOfWork;
+            _gameRepository = gameRepository;
         }
 
         public async Task<int> Handle(CreateGameCommand request, CancellationToken cancellationToken)
@@ -23,10 +24,10 @@ namespace tictactoe.domain.Commands
                 PlayerOId = request.PlayerOId,
                 BoardSize = request.BoardSize,
                 WinningLineLength = request.WinningLineLength,
-                Status = GameStatus.InProgress // Status se postavlja u handleru
             };
+            // Kreiraj igru u bazi podataka
 
-            await _unitOfWork.Games.AddAsync(game);
+            await _gameRepository.CreateGame(game);
             await _unitOfWork.SaveChangesAsync(); // Transakcija se potvrđuje ovde
             return game.Id;
         }
