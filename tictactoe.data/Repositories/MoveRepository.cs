@@ -14,7 +14,6 @@ namespace tictactoe.data.Repositories
         {
             // Implementation for adding a move
             await _context.Set<Move>().AddAsync(move);
-            await _context.SaveChangesAsync();
             return true;
         }
 
